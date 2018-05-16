@@ -45,11 +45,14 @@ class ModelTests: XCTestCase {
             return
         }
 
+        let date = DateFormatter.date(from: "1989-06-23", format: Constants.DateFormats.default)!
+
         XCTAssert((type(of: movie) == Movie.self), "Not a movie type")
-        XCTAssertEqual(movie.title, "Batman", "Movie title is wrong. Should be 'Batman'")
-        XCTAssertEqual(movie.id, 268, "Movie id is wrong. Should be '268'")
-        XCTAssertEqual(movie.voteCount, 2822, "Movie vote count is wrong. Should be '2822'")
-        XCTAssertEqual(movie.popularity, 17.223516, "Movie popularity is wrong. Should be '17.223516'")
+        XCTAssertEqual("Batman", movie.title, "Movie title is wrong. Should be 'Batman'")
+        XCTAssertEqual(268, movie.id, "Movie id is wrong. Should be '268'")
+        XCTAssertEqual(date, movie.releaseDate, "Movie date is wrong. Should be '1989-06-23'")
+        XCTAssertEqual(2822, movie.voteCount, "Movie vote count is wrong. Should be '2822'")
+        XCTAssertEqual(17.223516, movie.popularity, "Movie popularity is wrong. Should be '17.223516'")
     }
 
     func testMoviesResponseModel() {
@@ -60,10 +63,24 @@ class ModelTests: XCTestCase {
         }
 
         XCTAssert((type(of: moviesResponse) == MoviesResponse.self), "Not a movie type")
-        XCTAssertEqual(moviesResponse.results.count, 20, "Movies Response current movies count is wrong. Should be '20'")
-        XCTAssertEqual(moviesResponse.page, 1, "Movies Response current page is wrong. Should be '1'")
-        XCTAssertEqual(moviesResponse.totalPages, 365, "Movies Response total pages is wrong. Should be '365'")
-        XCTAssertEqual(moviesResponse.totalResults, 7289, "Movies Response total movies count is wrong. Should be '7289'")
+        XCTAssertEqual(20, moviesResponse.results.count, "Movies Response current movies count is wrong. Should be '20'")
+        XCTAssertEqual(1, moviesResponse.page, "Movies Response current page is wrong. Should be '1'")
+        XCTAssertEqual(365, moviesResponse.totalPages, "Movies Response total pages is wrong. Should be '365'")
+        XCTAssertEqual(7289, moviesResponse.totalResults, "Movies Response total movies count is wrong. Should be '7289'")
+
+        if let movie = moviesResponse.results.first {
+            let date = DateFormatter.date(from: "1995-10-20", format: Constants.DateFormats.default)!
+
+            XCTAssert((type(of: movie) == Movie.self), "Not a movie type")
+            XCTAssertEqual("Dilwale Dulhania Le Jayenge", movie.title, "Movie title is wrong. Should be 'Dilwale Dulhania Le Jayenge'")
+            XCTAssertEqual(19404, movie.id, "Movie id is wrong. Should be '268'")
+            XCTAssertEqual(date, movie.releaseDate, "Movie date is wrong. Should be '1995-10-20'")
+            XCTAssertEqual(1389, movie.voteCount, "Movie vote count is wrong. Should be '1389'")
+            XCTAssertEqual(16.809409, movie.popularity, "Movie popularity is wrong. Should be '16.809409'")
+        } else {
+            XCTAssert(false, "Movies Response current movies count is wrong.")
+        }
+
     }
     
 }

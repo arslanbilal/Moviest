@@ -34,12 +34,13 @@ class NetworkTests: XCTestCase {
             case .success(let value):
                 XCTAssertEqual(20, value.results.count, "Movies Response current movies count is wrong. Should be '20'")
                 XCTAssertEqual(1, value.page, "Movies Response current page is wrong. Should be '1'")
-                XCTAssertEqual(365, value.totalPages, "Movies Response total pages is wrong. Should be '365'")
-                XCTAssertEqual(7289, value.totalResults, "Movies Response total movies count is wrong. Should be '7289'")
 
                 if let movie = value.results.first {
+                    let date = DateFormatter.date(from: "1995-10-20", format: Constants.DateFormats.default)!
+
                     XCTAssertEqual(19404, movie.id, "Movie id is wrong. Should be '19404'")
                     XCTAssertEqual("Dilwale Dulhania Le Jayenge", movie.title, "Movie title is wrong. Should be 'Dilwale Dulhania Le Jayenge'")
+                    XCTAssertEqual(date, movie.releaseDate, "Movie date is wrong. Should be '1995-10-20'")
                 } else {
                     XCTAssert(false, "Movies Response current movies count is wrong.")
                 }
@@ -51,7 +52,7 @@ class NetworkTests: XCTestCase {
             e.fulfill()
         }
 
-        waitForExpectations(timeout: 10.0) { (error: Error?) in
+        waitForExpectations(timeout: 30.0) { (error: Error?) in
             print("Timeout Error: \(error.debugDescription)")
         }
     }

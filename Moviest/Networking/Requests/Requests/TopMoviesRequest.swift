@@ -1,5 +1,5 @@
 //
-//  SearchMoviesRequest.swift
+//  TopMoviesRequest.swift
 //  Moviest
 //
 //  Created by Bilal Arslan on 15.05.2018.
@@ -8,29 +8,22 @@
 
 import Foundation
 
-struct SearchMoviesRequest: MovieRequest {
+struct TopMoviesRequest: MovieRequest {
 
     // MovieRequest protocol variables
-    
-    var path: String = "/search/movie"
+    var path: String = "/movie/top_rated"
 
     var parameters: [String : Any] {
         return [
-            "page": page,
-            "query": query
+            "page": page
         ]
     }
 
     // Class variables
-    
-    private let query: String
     private let page: Int
 
     // Initializer
-
-    init(query: String, page: Int) {
-        self.query = query
+    init(page: Int) {
         self.page = page
     }
-
 }
