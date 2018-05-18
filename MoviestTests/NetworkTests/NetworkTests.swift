@@ -29,7 +29,7 @@ class NetworkTests: XCTestCase {
         let e = expectation(description: "Top rated movies")
         let request = getRequestForType(type: .topRated(page: 1))
 
-        RequestManager.shared.request(request) { (response: Response<MoviesResponse>) in
+        RequestManager.shared.perform(request) { (response: Response<MoviesResponse>) in
             switch response.result {
             case .success(let value):
                 XCTAssertEqual(20, value.results.count, "Movies Response current movies count is wrong. Should be '20'")
@@ -61,7 +61,7 @@ class NetworkTests: XCTestCase {
         let e = expectation(description: "Search result movies")
         let request = getRequestForType(type: .search(query: "Bilal", page: 1))
 
-        RequestManager.shared.request(request) { (response: Response<MoviesResponse>) in
+        RequestManager.shared.perform(request) { (response: Response<MoviesResponse>) in
             switch response.result {
             case .success(let value):
                 XCTAssertEqual(5, value.results.count, "Movies Response current movies count is wrong. Should be '5'")

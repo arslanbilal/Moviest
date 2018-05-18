@@ -15,14 +15,14 @@ protocol MovieRequest: BaseRequest { }
 
 extension MovieRequest {
 
-    // Default implementations
+    // Default implementations have to be in protocol extention.
     var baseURL: URL                { return URL(string: "https://api.themoviedb.org/3")! }
     var method: HTTPMethod          { return .get }
     var parameters: [String: Any]   { return [:] }
     var headers: [String: String]?  { return nil }
     var encoding: ParameterEncoding { return URLEncoding.default }
 
-    // URLRequestConvertible
+    // Creating request for the properties.
     public func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {

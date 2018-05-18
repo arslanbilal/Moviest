@@ -23,5 +23,3 @@ struct MoviesResponse: Codable {
     }
 
 }
-
-extension MoviesResponse: JSONCodable { }

@@ -16,6 +16,9 @@ public enum NetworkError: Error {
     case corruptedData
 }
 
+typealias Completion<T: Codable>    = (_ responseObject: Response<T>) -> Void
+typealias NetworkManagerRequest     = DataRequest
+
 class RequestManager {
 
     static var shared = RequestManager()
@@ -31,11 +34,7 @@ class RequestManager {
         #endif
     }
 
-}
-
-extension RequestManager: Requestable {
-
-    @discardableResult func request<T : JSONCodable>(_ request: MovieRequest, handleCompletion: @escaping (Response<T>) -> Void) -> NetworkManagerRequest? {
+    @discardableResult func perform<T : Codable>(_ request: MovieRequest, handleCompletion: @escaping (Response<T>) -> Void) -> NetworkManagerRequest? {
         let dataRequest = manager.request(request)
         dataRequest.responseData { (dataResponse: DataResponse<Data>) in
             let result: Result<T>
