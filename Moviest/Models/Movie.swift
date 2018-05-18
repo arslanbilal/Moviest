@@ -82,8 +82,6 @@ struct Movie: Codable {
 
 }
 
-extension Movie: JSONCodable { }
-
 extension Movie: ViewBidable {
 
     func getTitle() -> String {
