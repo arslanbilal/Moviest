@@ -15,25 +15,29 @@ class TopMoviesViewModel: MovieViewModel {
 
     func reloadMovies() {
         state.update(page: Page(current: 1, total: 1))
-        fetch(at: state.page.currentPage)
+        fetch(at: state.page.currentPage) { [weak self] (movies) in
+            guard let strongSelf = self else { return }
+            strongSelf.onChange?(strongSelf.state.reload(movies: movies))
+        }
     }
 
     func loadMoreMovies() {
         guard state.page.hasNextPage else { return }
-        fetch(at: state.page.getNextPage())
+        fetch(at: state.page.getNextPage()) { [weak self] (movies) in
+            guard let strongSelf = self else { return }
+            strongSelf.onChange?(strongSelf.state.insert(movies: movies))
+        }
     }
 
 }
 
 extension TopMoviesViewModel {
 
-    func fetch(at page: Int) {
+    func fetch(at page: Int, handler: @escaping ([Movie]) -> Void) {
         onChange?(state.setFetching(fetching: true))
         let request = TopMoviesRequest(page: page)
         RequestManager.shared.perform(request) { [weak self] (response: Response<MoviesResponse>) in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
             switch response.result {
             case .success(let value):
                 guard let movies = value.results,
@@ -43,11 +47,7 @@ extension TopMoviesViewModel {
                         return
                 }
                 strongSelf.state.update(page: Page(current: currentPage, total: totalPage))
-                if strongSelf.state.movies.count > 0 {
-                    strongSelf.onChange?(strongSelf.state.insert(movies: movies))
-                } else {
-                    strongSelf.onChange?(strongSelf.state.reload(movies: movies))
-                }
+                handler(movies)
             case .failure(let error):
                 strongSelf.onChange?(.error(.connectionError(error)))
             }
