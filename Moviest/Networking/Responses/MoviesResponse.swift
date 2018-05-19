@@ -10,7 +10,7 @@ import Foundation
 
 struct MoviesResponse: Codable {
 
-    private(set) var results: [Movie]
+    private(set) var results: [Movie]?
     private(set) var page: Int?
     private(set) var totalResults: Int?
     private(set) var totalPages: Int?

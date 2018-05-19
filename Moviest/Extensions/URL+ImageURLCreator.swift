@@ -8,23 +8,35 @@
 
 import Foundation
 
-enum ImageSize: String {
-    case w92 = "/w92"
-    case ​w185 = "​/w185"
-    case ​w500 = "​/w500"
-    case w780 = "/w780"
+enum ImageSize {
+    case w92
+    case ​w185
+    case ​w500
+    case w780
 
-    // http://image.tmdb.org/t/p/w92/2DtPSyODKWXluIRV7PVru0SSzja.jpg
+    func string() -> String {
+        switch self {
+        case .w92:
+            return "/w92"
+        case .​w185:
+            return "/w185"
+        case .​w500:
+            return "/w500"
+        case .w780:
+            return "/w780"
+        }
+    }
 }
 
 extension URL {
 
-    static private let baseURL = URL(string: "http://image.tmdb.org/t/p/")!
+    static private let baseURL = URL(string: "http://image.tmdb.org/t/p")!
 
     static func getMoviePosterURL(fromPath path: String, size: ImageSize) -> URL {
-        var url = baseURL.appendingPathComponent(size.rawValue)
+        var url = baseURL.appendingPathComponent(size.string())
         url = url.appendingPathComponent(path)
         return url
     }
+    // http://image.tmdb.org/t/p/w92/2DtPSyODKWXluIRV7PVru0SSzja.jpg
 
 }
