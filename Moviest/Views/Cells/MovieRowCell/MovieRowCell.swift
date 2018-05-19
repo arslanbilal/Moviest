@@ -48,7 +48,7 @@ class MovieRowCell: BaseTableViewCell, NibLoadable, Instantiatable {
         releaseDateLabel.text = nil
         overviewLabel.text = nil
         posterImageView.image = nil
-//        posterImageView.kf.cancelDownloadTask()
+        posterImageView.kf.cancelDownloadTask()
     }
 
 }
