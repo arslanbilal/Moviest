@@ -32,10 +32,10 @@ class NetworkTests: XCTestCase {
         RequestManager.shared.perform(request) { (response: Response<MoviesResponse>) in
             switch response.result {
             case .success(let value):
-                XCTAssertEqual(20, value.results.count, "Movies Response current movies count is wrong. Should be '20'")
+                XCTAssertEqual(20, value.results?.count, "Movies Response current movies count is wrong. Should be '20'")
                 XCTAssertEqual(1, value.page, "Movies Response current page is wrong. Should be '1'")
 
-                if let movie = value.results.first {
+                if let movie = value.results?.first {
                     let date = DateFormatter.date(from: "1995-10-20", format: Constants.DateFormats.default)!
 
                     XCTAssertEqual(19404, movie.id, "Movie id is wrong. Should be '19404'")
@@ -64,12 +64,12 @@ class NetworkTests: XCTestCase {
         RequestManager.shared.perform(request) { (response: Response<MoviesResponse>) in
             switch response.result {
             case .success(let value):
-                XCTAssertEqual(5, value.results.count, "Movies Response current movies count is wrong. Should be '5'")
+                XCTAssertEqual(5, value.results?.count, "Movies Response current movies count is wrong. Should be '5'")
                 XCTAssertEqual(1, value.page, "Movies Response current page is wrong. Should be '1'")
                 XCTAssertEqual(1, value.totalPages, "Movies Response total pages is wrong. Should be '1'")
                 XCTAssertEqual(5, value.totalResults, "Movies Response total movies count is wrong. Should be '5'")
 
-                if let movie = value.results.first {
+                if let movie = value.results?.first {
                     XCTAssertEqual(332718, movie.id, "Movie id is wrong. Should be '332718'")
                     XCTAssertEqual("Bilal: A New Breed of Hero", movie.title, "Movie title is wrong. Should be 'Bilal: A New Breed of Hero'")
                 } else {

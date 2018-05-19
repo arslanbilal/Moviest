@@ -10,8 +10,11 @@ import Foundation
 
 struct Movie: Codable {
 
+    // Required
     var id: Int
     var title: String
+
+    // Optionals
     private var posterPath: String?
     var overview: String?
     var releaseDate: Date?
@@ -25,6 +28,15 @@ struct Movie: Codable {
     var isAdult: Bool?
     var isVideo: Bool?
 
+    init(id: Int, title: String, overview: String? = nil, posterPath: String? = nil, releaseDate: Date? = nil) {
+        self.id = id
+        self.title = title
+        self.overview = overview
+        self.posterPath = posterPath
+        self.releaseDate = releaseDate
+    }
+
+    // MARK: Codable Protocol
     enum CodingKeys: String, CodingKey {
         case id
         case title
@@ -89,7 +101,10 @@ extension Movie: ViewBidable {
     }
 
     func getSubtitle() -> String {
-        return ""
+        guard let date = releaseDate else {
+            return ""
+        }
+        return DateFormatter.string(from: date, format: "YYYY")
     }
 
     func getImageURL() -> URL? {
@@ -103,6 +118,12 @@ extension Movie: ViewBidable {
         return overview
     }
 
+}
+
+extension Movie: Equatable {
+    static func ==(lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.id == rhs.id // For now id comparision is enough
+    }
 }
 
 /*

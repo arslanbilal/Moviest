@@ -63,12 +63,12 @@ class ModelTests: XCTestCase {
         }
 
         XCTAssert((type(of: moviesResponse) == MoviesResponse.self), "Not a movie type")
-        XCTAssertEqual(20, moviesResponse.results.count, "Movies Response current movies count is wrong. Should be '20'")
+        XCTAssertEqual(20, moviesResponse.results?.count, "Movies Response current movies count is wrong. Should be '20'")
         XCTAssertEqual(1, moviesResponse.page, "Movies Response current page is wrong. Should be '1'")
         XCTAssertEqual(365, moviesResponse.totalPages, "Movies Response total pages is wrong. Should be '365'")
         XCTAssertEqual(7289, moviesResponse.totalResults, "Movies Response total movies count is wrong. Should be '7289'")
 
-        if let movie = moviesResponse.results.first {
+        if let movie = moviesResponse.results?.first {
             let date = DateFormatter.date(from: "1995-10-20", format: Constants.DateFormats.default)!
 
             XCTAssert((type(of: movie) == Movie.self), "Not a movie type")

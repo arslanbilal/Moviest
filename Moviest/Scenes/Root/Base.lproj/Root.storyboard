@@ -31,7 +31,7 @@
         <!--Search-->
         <scene sceneID="Hyw-Ap-Eph">
             <objects>
-                <viewController id="T0l-QO-qO7" customClass="SearchViewController" customModule="Moviest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T0l-QO-qO7" customClass="SearchViewController" customModule="Moviest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eCo-BW-bHp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,14 +47,33 @@
         <!--Top Rated-->
         <scene sceneID="chV-Vx-xWr">
             <objects>
-                <viewController id="Kr5-G1-21j" customClass="TopMoviesViewController" customModule="Moviest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopMoviesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kr5-G1-21j" customClass="TopMoviesViewController" customModule="Moviest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kIT-k1-f4f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dhb-ki-DIZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Kr5-G1-21j" id="twl-kr-YEj"/>
+                                    <outlet property="delegate" destination="Kr5-G1-21j" id="xU3-pl-5BM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dhb-ki-DIZ" firstAttribute="bottom" secondItem="0mh-qH-U9X" secondAttribute="bottom" id="2ku-4D-hDi"/>
+                            <constraint firstItem="Dhb-ki-DIZ" firstAttribute="trailing" secondItem="0mh-qH-U9X" secondAttribute="trailing" id="DvN-ac-8oS"/>
+                            <constraint firstItem="Dhb-ki-DIZ" firstAttribute="leading" secondItem="0mh-qH-U9X" secondAttribute="leading" id="WP0-PW-Sh0"/>
+                            <constraint firstItem="Dhb-ki-DIZ" firstAttribute="top" secondItem="0mh-qH-U9X" secondAttribute="top" id="jlk-Ac-WfO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0mh-qH-U9X"/>
                     </view>
                     <navigationItem key="navigationItem" title="Top Rated" id="Wur-LP-ltb"/>
+                    <connections>
+                        <outlet property="tableView" destination="Dhb-ki-DIZ" id="UI3-qR-cmk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4nZ-ke-GzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

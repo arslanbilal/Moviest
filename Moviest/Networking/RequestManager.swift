@@ -8,7 +8,9 @@
 
 import Foundation
 import Alamofire
+#if DEBUG
 import Reqres
+#endif
 
 public enum NetworkError: Error {
     case unknown
