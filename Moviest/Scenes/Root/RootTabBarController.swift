@@ -23,7 +23,12 @@ class RootTabBarController: UITabBarController, StoryboardLoadable, Instantiatab
         topMoviesViewController.viewModel = TopMoviesViewModel()
         let topMoviesNavigationController = BaseNavigationController(rootViewController: topMoviesViewController)
 
-        viewControllers = [topMoviesNavigationController]
+        let searchViewController = SearchViewController.instantiate()
+        searchViewController.viewModel = SearchViewModel()
+        searchViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        let searchNavigationViewController = BaseNavigationController(rootViewController: searchViewController)
+
+        viewControllers = [topMoviesNavigationController, searchNavigationViewController]
     }
 
 }

@@ -18,11 +18,11 @@ class MovieListViewController: BaseViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
 
     var viewModel: MovieViewModel!
-    fileprivate weak var refreshControl: UIRefreshControl?
+    weak var refreshControl: UIRefreshControl?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        setupUI()
         bindViewModel()
         reloadMovies()
     }
@@ -72,7 +72,9 @@ class MovieListViewController: BaseViewController {
 
 extension MovieListViewController {
 
-    func setupTableView() {
+    // @objc for overriding functions
+
+    @objc func setupUI() {
         tableView.register(MovieRowCell.defaultNib, forCellReuseIdentifier: MovieRowCell.defaultReuseIdentifier)
         tableView.register(LoadingCell.defaultNib, forCellReuseIdentifier: LoadingCell.defaultReuseIdentifier)
 

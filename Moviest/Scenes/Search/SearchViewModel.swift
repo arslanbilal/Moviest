@@ -1,41 +1,55 @@
 //
-//  TopMoviesViewModel.swift
+//  SearchViewModel.swift
 //  Moviest
 //
-//  Created by Bilal Arslan on 19.05.2018.
+//  Created by Bilal Arslan on 20.05.2018.
 //  Copyright © 2018 Bilal Arslan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class TopMoviesViewModel: MovieViewModel {
+class SearchViewModel: MovieViewModel {
 
     fileprivate(set) var state = MovieListState()
     var onChange: ((MovieListState.Change) -> Void)?
 
+    var searchQuery: String? {
+        didSet {
+            reloadMovies()
+        }
+    }
+
     func reloadMovies() {
+        guard let query = searchQuery else { return }
         state.update(page: Page.default)
-        fetch(at: state.page.currentPage) { [weak self] (movies) in
+        fetchMovies(with: query, page: state.page.currentPage) { [weak self] (movies) in
             guard let strongSelf = self else { return }
             strongSelf.onChange?(strongSelf.state.reload(movies: movies))
         }
     }
 
     func loadMoreMovies() {
+        guard let query = searchQuery else { return }
         guard state.page.hasNextPage else { return }
-        fetch(at: state.page.getNextPage()) { [weak self] (movies) in
+        fetchMovies(with: query, page: state.page.getNextPage()) { [weak self] (movies) in
             guard let strongSelf = self else { return }
             strongSelf.onChange?(strongSelf.state.insert(movies: movies))
         }
     }
 
+    func clearMovies() {
+        searchQuery = nil
+        state.update(page: Page.default)
+        onChange?(state.reload(movies: []))
+    }
+
 }
 
-extension TopMoviesViewModel {
+extension SearchViewModel {
 
-    func fetch(at page: Int, handler: @escaping ([Movie]) -> Void) {
+    func fetchMovies(with query: String, page: Int, handler: @escaping ([Movie]) -> Void) {
         onChange?(state.setFetching(fetching: true))
-        let request = TopMoviesRequest(page: page)
+        let request = SearchMoviesRequest(query: query, page: page)
         RequestManager.shared.perform(request) {
             [weak self] (response: Response<MoviesResponse>) in
             guard let strongSelf = self else { return }
@@ -47,8 +61,7 @@ extension TopMoviesViewModel {
                         strongSelf.onChange?(.error(.mappingFailed))
                         return
                 }
-                let page = Page(current: currentPage, total: totalPage)
-                strongSelf.state.update(page: page)
+                strongSelf.state.update(page: Page(current: currentPage, total: totalPage))
                 handler(movies)
             case .failure(let error):
                 strongSelf.onChange?(.error(.connectionError(error)))
