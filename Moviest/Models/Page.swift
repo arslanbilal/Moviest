@@ -10,8 +10,11 @@ import Foundation
 
 struct Page {
 
-    fileprivate(set) var currentPage: Int = 1
-    fileprivate(set) var totalPage: Int = 1
+    static let `default` = Page(current: 1, total: 1)
+
+    fileprivate(set) var currentPage: Int
+    fileprivate(set) var totalPage: Int
+
     var hasNextPage: Bool {
         return currentPage < totalPage
     }

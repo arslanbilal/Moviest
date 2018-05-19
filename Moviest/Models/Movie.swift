@@ -104,7 +104,7 @@ extension Movie: ViewBidable {
         guard let date = releaseDate else {
             return ""
         }
-        return DateFormatter.string(from: date, format: "YYYY")
+        return DateFormatter.string(from: date, format: "MMMM YYYY")
     }
 
     func getImageURL() -> URL? {
