@@ -48,7 +48,6 @@ extension MovieRequest {
             request.allHTTPHeaderFields = headers
             return try encoding.encode(request, with: parameters)
         } catch {
-            // TODO: Error handling
             throw error
         }
     }

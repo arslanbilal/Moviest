@@ -11,6 +11,8 @@ import UIKit
 class SearchViewModel: MovieViewModel {
 
     fileprivate(set) var state = MovieListState()
+    fileprivate(set) var recentSearchViewModel = RecentSearchViewModel()
+
     var onChange: ((MovieListState.Change) -> Void)?
 
     var searchQuery: String? {
@@ -25,6 +27,11 @@ class SearchViewModel: MovieViewModel {
         fetchMovies(with: query, page: state.page.currentPage) { [weak self] (movies) in
             guard let strongSelf = self else { return }
             strongSelf.onChange?(strongSelf.state.reload(movies: movies))
+
+            // If query return some movies, add query to last searches list.
+            if movies.isEmpty == false {
+                strongSelf.recentSearchViewModel.recentSearchesManager.addSearchQuery(query)
+            }
         }
     }
 

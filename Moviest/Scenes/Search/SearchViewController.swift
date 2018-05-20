@@ -13,9 +13,60 @@ class SearchViewController: MovieListViewController, StoryboardLoadable, Instant
     static var defaultStoryboardName: String = Constants.StoryboardName.search
 
     fileprivate weak var searchBar: UISearchBar!
+    @IBOutlet weak var recentSearchesTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+
+    override func viewModelStateChange(change: MovieListState.Change) {
+        super.viewModelStateChange(change: change)
+        switch change {
+        case .moviesChanged(let collectionChange):
+            switch collectionChange {
+            case .reload:
+                if viewModel.state.movies.isEmpty {
+                    Alert.present(withTitle: "No movies found!", from: self)
+                }
+            default:
+                break;
+            }
+        default:
+            break;
+        }
+    }
+
+}
+
+extension SearchViewController {
+
+    override func setupUI() {
+        super.setupUI()
+
+        if let searchViewModel = viewModel as? SearchViewModel {
+            view.bringSubview(toFront: recentSearchesTableView)
+            recentSearchesTableView.dataSource = searchViewModel.recentSearchViewModel
+            recentSearchesTableView.delegate = searchViewModel.recentSearchViewModel
+
+            searchViewModel.recentSearchViewModel.selectionHandler = {
+                [weak self] query in
+                if let model = self?.viewModel as? SearchViewModel {
+                    model.searchQuery = query
+                }
+                self?.searchBar.text = query
+                self?.searchBar.resignFirstResponder()
+            }
+        }
+        recentSearchesTableView.register(RecentSearchesCell.defaultNib, forCellReuseIdentifier: RecentSearchesCell.defaultReuseIdentifier)
+        recentSearchesTableView.isHidden = true
+
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.placeholder = "Search movies"
+        searchBar.tintColor = .red
+        navigationItem.titleView = searchBar
+        self.searchBar = searchBar
     }
 
     override func reloadMovies() {
@@ -31,24 +82,12 @@ class SearchViewController: MovieListViewController, StoryboardLoadable, Instant
 
 }
 
-extension SearchViewController {
-
-    override func setupUI() {
-        super.setupUI()
-        let searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.placeholder = "Search movies"
-        searchBar.tintColor = .red
-        navigationItem.titleView = searchBar
-        self.searchBar = searchBar
-    }
-
-}
-
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         defer {
+            recentSearchesTableView.reloadData()
+            recentSearchesTableView.isHidden = false
             searchBar.setShowsCancelButton(true, animated: true)
         }
         return true
@@ -56,6 +95,7 @@ extension SearchViewController: UISearchBarDelegate {
 
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         defer {
+            recentSearchesTableView.isHidden = true
             searchBar.setShowsCancelButton(false, animated: true)
         }
         return true

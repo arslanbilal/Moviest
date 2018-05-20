@@ -13,6 +13,7 @@ class BaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.red]
+        navigationBar.tintColor = .red
     }
 
 }

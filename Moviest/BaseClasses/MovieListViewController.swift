@@ -18,6 +18,8 @@ class MovieListViewController: BaseViewController {
     @IBOutlet fileprivate weak var tableView: UITableView!
 
     var viewModel: MovieViewModel!
+    var loadingView = LoadingView.instantiate()
+    var emptyStateView = EmptyView.instantiate()
     weak var refreshControl: UIRefreshControl?
 
     override func viewDidLoad() {
@@ -27,12 +29,17 @@ class MovieListViewController: BaseViewController {
         reloadMovies()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        loadingView.center = view.center
+    }
+
     func viewModelStateChange(change: MovieListState.Change) {
         switch change {
         case .none:
             break
         case .fetchStateChanged:
-            // self.loadingView.isHidden = !viewModel.state.fetching
+            loadingView.isHidden = !viewModel.state.fetching
             break
         case .moviesChanged(let collectionChange):
             switch collectionChange {
@@ -41,11 +48,6 @@ class MovieListViewController: BaseViewController {
                 tableView.applyCollectionChange(collectionChange,
                                                 toSection: PaginationSection.content.rawValue,
                                                 withAnimation: .fade)
-                if viewModel.state.movies.isEmpty {
-                    // TODO: Present empty state
-                } else {
-                    // TODO: Dismiss empty state
-                }
             default:
                 tableView.beginUpdates()
                 if !viewModel.state.page.hasNextPage {
@@ -58,12 +60,20 @@ class MovieListViewController: BaseViewController {
                                                 withAnimation: .fade)
                 tableView.endUpdates()
             }
-            refreshControl?.endRefreshing()
+            emptyStateView.isHidden = !viewModel.state.movies.isEmpty
             break
-        case .error(/*let movieError*/_):
-            // State of the view
+        case .error(let movieError):
+            switch movieError {
+            case .connectionError(_):
+                Alert.present(withTitle: "Connection Error", description: "Check your network status and pull to refresh", from: self)
+            case .mappingFailed:
+                Alert.present(withTitle: "Invalid Data", description: "There is an error when getting data from server. Please pull to refresh", from: self)
+            case .reloadFailed:
+                Alert.present(withTitle: "Invalid Data", description: "There is an error when getting data from server. Please pull to refresh", from: self)
+            }
             break
         }
+        refreshControl?.endRefreshing()
     }
 
 }
@@ -86,6 +96,21 @@ extension MovieListViewController {
                                             NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
         refreshControl.addTarget(self, action: #selector(reloadMovies), for: .valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
+
+        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(emptyStateView)
+        view.bringSubview(toFront: emptyStateView)
+        emptyStateView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        emptyStateView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        emptyStateView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        emptyStateView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        emptyStateView.isHidden = true
+
+        view.addSubview(loadingView)
+        view.bringSubview(toFront: loadingView)
+        loadingView.center = view.center
+        loadingView.isHidden = true
+
         self.refreshControl = refreshControl
     }
 
