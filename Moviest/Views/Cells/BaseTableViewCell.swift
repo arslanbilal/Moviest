@@ -10,6 +10,6 @@ import UIKit
 
 class BaseTableViewCell: UITableViewCell {
 
-    var viewBindableModel: ViewBidable?
+    var viewBindableModel: ViewBindable?
 
 }
