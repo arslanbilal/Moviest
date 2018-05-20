@@ -16,12 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEi-Ib-LCj">
-                    <rect key="frame" x="10" y="312" width="355" height="63.5"/>
-                    <string key="text">No Movie 
-Founded!</string>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Movie Founded!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEi-Ib-LCj">
+                    <rect key="frame" x="10" y="278" width="355" height="31.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -29,7 +27,7 @@ Founded!</string>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OEi-Ib-LCj" secondAttribute="trailing" constant="10" id="fFy-68-noy"/>
                 <constraint firstItem="OEi-Ib-LCj" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="qlc-jb-IWp"/>
-                <constraint firstItem="OEi-Ib-LCj" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="z3k-ZB-wgN"/>
+                <constraint firstItem="OEi-Ib-LCj" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-50" id="z3k-ZB-wgN"/>
                 <constraint firstItem="OEi-Ib-LCj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="z6q-Oq-daY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
