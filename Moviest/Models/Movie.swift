@@ -94,7 +94,7 @@ struct Movie: Codable {
 
 }
 
-extension Movie: ViewBidable {
+extension Movie: ViewBindable {
 
     func getTitle() -> String {
         return title

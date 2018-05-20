@@ -22,7 +22,7 @@ class MovieRowCell: BaseTableViewCell, NibLoadable, Instantiatable {
         }
     }
 
-    override var viewBindableModel: ViewBidable? {
+    override var viewBindableModel: ViewBindable? {
         didSet {
             guard let bindable = viewBindableModel else {
                 return

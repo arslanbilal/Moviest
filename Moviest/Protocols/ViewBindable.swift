@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ViewBidable {
+protocol ViewBindable {
 
     func getTitle() -> String
     func getSubtitle() -> String
@@ -17,7 +17,7 @@ protocol ViewBidable {
 
 }
 
-extension ViewBidable {
+extension ViewBindable {
 
     func getTitle() -> String {
         return ""
