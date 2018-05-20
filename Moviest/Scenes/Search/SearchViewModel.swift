@@ -11,6 +11,8 @@ import UIKit
 class SearchViewModel: MovieViewModel {
 
     fileprivate(set) var state = MovieListState()
+    fileprivate(set) var recentSearchViewModel = RecentSearchViewModel()
+
     var onChange: ((MovieListState.Change) -> Void)?
 
     var searchQuery: String? {
