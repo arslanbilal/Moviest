@@ -12,7 +12,6 @@
 		7706B13B20B0A3D000A261E9 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706B13A20B0A3D000A261E9 /* Pagination.swift */; };
 		7706B13F20B0A4D000A261E9 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706B13D20B0A4D000A261E9 /* LoadingCell.swift */; };
 		7706B14020B0A4D000A261E9 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7706B13E20B0A4D000A261E9 /* LoadingCell.xib */; };
-		7706B14320B0A86200A261E9 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706B14220B0A86200A261E9 /* StyleKit.swift */; };
 		7706B14520B0A93200A261E9 /* EmptyStatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706B14420B0A93200A261E9 /* EmptyStatable.swift */; };
 		7706B14720B0C99A00A261E9 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706B14620B0C99A00A261E9 /* MovieListViewController.swift */; };
 		7706B14920B0CD0800A261E9 /* Constant+StoryboardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706B14820B0CD0800A261E9 /* Constant+StoryboardName.swift */; };
@@ -99,7 +98,6 @@
 		7706B13A20B0A3D000A261E9 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		7706B13D20B0A4D000A261E9 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		7706B13E20B0A4D000A261E9 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
-		7706B14220B0A86200A261E9 /* StyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		7706B14420B0A93200A261E9 /* EmptyStatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStatable.swift; sourceTree = "<group>"; };
 		7706B14620B0C99A00A261E9 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		7706B14820B0CD0800A261E9 /* Constant+StoryboardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+StoryboardName.swift"; sourceTree = "<group>"; };
@@ -233,14 +231,6 @@
 			path = LoadingCell;
 			sourceTree = "<group>";
 		};
-		7706B14120B0A84E00A261E9 /* StyleKit */ = {
-			isa = PBXGroup;
-			children = (
-				7706B14220B0A86200A261E9 /* StyleKit.swift */,
-			);
-			path = StyleKit;
-			sourceTree = "<group>";
-		};
 		777097C720ACA377008CC48C /* BaseRequests */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +264,6 @@
 				7791C49920B1169E0056A60C /* EmptyView */,
 				7791C49220B10ED00056A60C /* LoadingView */,
 				7783EAF020AF9606006C160F /* Cells */,
-				7783EAFB20AF9A86006C160F /* TableViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,13 +286,6 @@
 				7783EAF520AF9680006C160F /* MovieRowCell.swift */,
 			);
 			path = MovieRowCell;
-			sourceTree = "<group>";
-		};
-		7783EAFB20AF9A86006C160F /* TableViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TableViews;
 			sourceTree = "<group>";
 		};
 		7783EB0020AF9BD2006C160F /* Codable */ = {
@@ -396,8 +378,6 @@
 				7792373820AA0F99000EAA46 /* Extensions */,
 				7792373420AA0F7C000EAA46 /* Protocols */,
 				7792373520AA0F80000EAA46 /* Reusables */,
-				7706B14120B0A84E00A261E9 /* StyleKit */,
-				7792373A20AA0FAD000EAA46 /* Localization */,
 				7792373920AA0FA7000EAA46 /* Resources */,
 			);
 			path = Moviest;
@@ -507,13 +487,6 @@
 				7792370F20A9F6FD000EAA46 /* Info.plist */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		7792373A20AA0FAD000EAA46 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Localization;
 			sourceTree = "<group>";
 		};
 		7792373B20AA1054000EAA46 /* Root */ = {
@@ -933,7 +906,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7706B14320B0A86200A261E9 /* StyleKit.swift in Sources */,
 				7709A2E520B11DD400280CCC /* RecentSearchesManager.swift in Sources */,
 				7706B13F20B0A4D000A261E9 /* LoadingCell.swift in Sources */,
 				779AD71820AB6B3500E2F601 /* TopMoviesRequest.swift in Sources */,
