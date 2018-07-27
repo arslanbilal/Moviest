@@ -6,7 +6,7 @@ target 'Moviest' do
   # Pods for Moviest
   pod 'Alamofire', '~> 4.7'
   pod 'Kingfisher', '~> 4.0'
-  pod "Reqres"
+  pod 'Reqres'
 
   target 'MoviestTests' do
     inherit! :search_paths

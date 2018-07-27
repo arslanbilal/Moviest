@@ -17,7 +17,6 @@ class SearchViewController: MovieListViewController, StoryboardLoadable, Instant
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     override func viewModelStateChange(change: MovieListState.Change) {
