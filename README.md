@@ -48,6 +48,7 @@ For further information please check [this blog post](https://medium.com/commenc
 
 ![MVVM ScreenShot](./images/mvvm.png)
 <hr>
+
 #### Redux
 
 ![MVVMRedux ScreenShot](./images/mvvmredux.png)
