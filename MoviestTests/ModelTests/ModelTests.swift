@@ -17,7 +17,7 @@ class ModelTests: XCTestCase {
     }
 
     func JSONFrom(fileType: FileType) -> Data? {
-        let fileName: String!
+        let fileName: String
         switch fileType {
         case .movie:
             fileName = "movie"

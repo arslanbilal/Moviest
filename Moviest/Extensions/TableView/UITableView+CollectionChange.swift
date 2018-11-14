@@ -10,7 +10,7 @@ import UIKit
 
 extension UITableView {
     
-    func applyCollectionChange(_ change: CollectionChange, toSection section: Int, withAnimation animation: UITableViewRowAnimation) {
+    func applyCollectionChange(_ change: CollectionChange, toSection section: Int, withAnimation animation: UITableView.RowAnimation) {
         func makeIndexPath(using index: Int) -> IndexPath {
             return IndexPath(row: index, section: section)
         }

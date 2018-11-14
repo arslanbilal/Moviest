@@ -676,13 +676,16 @@
 				TargetAttributes = {
 					779236FF20A9F6FC000EAA46 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 					};
 					7792371320A9F6FD000EAA46 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 						TestTargetID = 779236FF20A9F6FC000EAA46;
 					};
 					7792371E20A9F6FD000EAA46 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 						TestTargetID = 779236FF20A9F6FC000EAA46;
 					};
 				};
@@ -1134,7 +1137,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.bilalarslan.Moviest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1156,7 +1159,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.bilalarslan.Moviest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1177,7 +1180,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.bilalarslan.MoviestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviest.app/Moviest";
 			};
@@ -1199,7 +1202,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.bilalarslan.MoviestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moviest.app/Moviest";
 			};
@@ -1221,7 +1224,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.bilalarslan.MoviestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Moviest;
 			};
@@ -1243,7 +1246,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.bilalarslan.MoviestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Moviest;
 			};

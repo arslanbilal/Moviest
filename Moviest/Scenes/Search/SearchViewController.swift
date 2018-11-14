@@ -44,7 +44,7 @@ extension SearchViewController {
         super.setupUI()
 
         if let searchViewModel = viewModel as? SearchViewModel {
-            view.bringSubview(toFront: recentSearchesTableView)
+            view.bringSubviewToFront(recentSearchesTableView)
             recentSearchesTableView.dataSource = searchViewModel.recentSearchViewModel
             recentSearchesTableView.delegate = searchViewModel.recentSearchViewModel
 

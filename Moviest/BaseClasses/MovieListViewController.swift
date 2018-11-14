@@ -92,14 +92,14 @@ extension MovieListViewController {
         refreshControl.tintColor = UIColor.red
         refreshControl.attributedTitle =
             NSAttributedString(string: "Pull To Refresh",
-                               attributes: [NSAttributedStringKey.foregroundColor: UIColor.red,
-                                            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)])
+                               attributes: [NSAttributedString.Key.foregroundColor: UIColor.red,
+                                            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)])
         refreshControl.addTarget(self, action: #selector(reloadMovies), for: .valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
 
         emptyStateView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(emptyStateView)
-        view.bringSubview(toFront: emptyStateView)
+        view.bringSubviewToFront(emptyStateView)
         emptyStateView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         emptyStateView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         emptyStateView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -107,7 +107,7 @@ extension MovieListViewController {
         emptyStateView.isHidden = true
 
         view.addSubview(loadingView)
-        view.bringSubview(toFront: loadingView)
+        view.bringSubviewToFront(loadingView)
         loadingView.center = view.center
         loadingView.isHidden = true
 
@@ -186,7 +186,7 @@ extension MovieListViewController: UITableViewDelegate {
         }
         switch section {
         case .content:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         case .loading:
             return C.loadingCellHeight
         }
