@@ -45,7 +45,9 @@ The application use store. In this store, you have your application state. From 
 For further information please check [this blog post](https://medium.com/commencis/using-redux-with-mvvm-on-ios-18212454d676). 
 
 #### MVVM
+
 ![MVVM ScreenShot](./images/mvvm.png)
 <hr>
 #### Redux
+
 ![MVVMRedux ScreenShot](./images/mvvmredux.png)
