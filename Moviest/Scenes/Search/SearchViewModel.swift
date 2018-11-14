@@ -17,6 +17,7 @@ class SearchViewModel: MovieViewModel {
 
     var searchQuery: String? {
         didSet {
+            _ = state.reload(movies: [])
             reloadMovies()
         }
     }

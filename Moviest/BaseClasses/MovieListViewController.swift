@@ -39,6 +39,10 @@ class MovieListViewController: BaseViewController {
         case .none:
             break
         case .fetchStateChanged:
+            if !viewModel.state.movies.isEmpty {
+                loadingView.isHidden = true
+                break
+            }
             loadingView.isHidden = !viewModel.state.fetching
             break
         case .moviesChanged(let collectionChange):
