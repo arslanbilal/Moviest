@@ -68,7 +68,6 @@
 		779AD71D20AB74FA00E2F601 /* MoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779AD71C20AB74FA00E2F601 /* MoviesResponse.swift */; };
 		779AD71F20AB75D700E2F601 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779AD71E20AB75D700E2F601 /* Response.swift */; };
 		779AD72220AB7D4000E2F601 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779AD72120AB7D4000E2F601 /* NetworkTests.swift */; };
-		77B2271E20B1284000A43F5F /* camera-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 77B2271D20B1284000A43F5F /* camera-image.png */; };
 		77CE638D20AB518300627597 /* topRated.json in Resources */ = {isa = PBXBuildFile; fileRef = 77CE638C20AB518300627597 /* topRated.json */; };
 		D453FFDA5FA3F39AB6C87A28 /* Pods_Moviest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1721CBA553B6EF90964D63D /* Pods_Moviest.framework */; };
 /* End PBXBuildFile section */
@@ -159,7 +158,6 @@
 		779AD71C20AB74FA00E2F601 /* MoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesResponse.swift; sourceTree = "<group>"; };
 		779AD71E20AB75D700E2F601 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		779AD72120AB7D4000E2F601 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
-		77B2271D20B1284000A43F5F /* camera-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-image.png"; sourceTree = "<group>"; };
 		77CE638C20AB518300627597 /* topRated.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = topRated.json; sourceTree = "<group>"; };
 		82E5A6FBB08E7C437BE76F74 /* Pods-MoviestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoviestTests/Pods-MoviestTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1721CBA553B6EF90964D63D /* Pods_Moviest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moviest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -478,7 +476,6 @@
 		7792373920AA0FA7000EAA46 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				77B2271920B127E200A43F5F /* Images */,
 				7792370A20A9F6FD000EAA46 /* Assets.xcassets */,
 				7792370C20A9F6FD000EAA46 /* LaunchScreen.storyboard */,
 				7792370F20A9F6FD000EAA46 /* Info.plist */,
@@ -589,14 +586,6 @@
 				779AD72120AB7D4000E2F601 /* NetworkTests.swift */,
 			);
 			path = NetworkTests;
-			sourceTree = "<group>";
-		};
-		77B2271920B127E200A43F5F /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				77B2271D20B1284000A43F5F /* camera-image.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -719,7 +708,6 @@
 				7706B14B20B0CD2900A261E9 /* TopMovies.storyboard in Resources */,
 				7783EAF820AF9680006C160F /* MovieRowCell.xib in Resources */,
 				7792370E20A9F6FD000EAA46 /* LaunchScreen.storyboard in Resources */,
-				77B2271E20B1284000A43F5F /* camera-image.png in Resources */,
 				7791C49B20B116AA0056A60C /* EmptyView.xib in Resources */,
 				7792370B20A9F6FD000EAA46 /* Assets.xcassets in Resources */,
 				7706B14D20B0CE7500A261E9 /* Search.storyboard in Resources */,
