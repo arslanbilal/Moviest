@@ -38,7 +38,7 @@ class RecentSearchesManager {
 
     func addSearchQuery(_ query: String) {
         // If already present remove it, it will be added to top again
-        if let index = recentSearches.index(of: query) {
+        if let index = recentSearches.firstIndex(of: query) {
             recentSearches.remove(at: index)
         }
         // Insert the new query to top

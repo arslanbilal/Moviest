@@ -24,13 +24,13 @@ public protocol EncodingTransformer {
 
 public extension KeyedDecodingContainer {
 
-    public func decode<Transformer: DecodingTransformer>(_ key: KeyedDecodingContainer.Key,
+    func decode<Transformer: DecodingTransformer>(_ key: KeyedDecodingContainer.Key,
                                                          transformer: Transformer) throws -> Transformer.Output where Transformer.Input : Decodable {
         let decoded: Transformer.Input = try self.decode(key)
         return try transformer.transform(decoded)
     }
 
-    public func decode<T: Decodable>(_ key: KeyedDecodingContainer.Key) throws -> T {
+    func decode<T: Decodable>(_ key: KeyedDecodingContainer.Key) throws -> T {
         return try self.decode(T.self, forKey: key)
     }
 
@@ -38,7 +38,7 @@ public extension KeyedDecodingContainer {
 
 public extension KeyedEncodingContainer {
 
-    public mutating func encode<Transformer: EncodingTransformer>(_ value: Transformer.Output,
+    mutating func encode<Transformer: EncodingTransformer>(_ value: Transformer.Output,
                                                                   forKey key: KeyedEncodingContainer.Key,
                                                                   transformer: Transformer) throws where Transformer.Input : Encodable {
         let transformed: Transformer.Input = try transformer.transform(value)
