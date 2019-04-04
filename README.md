@@ -16,9 +16,9 @@ Moviest is a simple movie list application that harnesses the power of [The Movi
 - List the last successful searches
 
 ### Requirements:
-- Xcode 10+
-- Swift 4.2+
-- iOS 9.0+
+- Xcode 10.2+
+- Swift 5.0+
+- iOS 10.0+
 
 ### Installation:
 1. Download the zip file.
@@ -29,7 +29,6 @@ Moviest is a simple movie list application that harnesses the power of [The Movi
 ### Third-party Libs:
 - `Alamofire` for networking
 - `Kingfisher` for image caching
-- `Reqres`for networking
 
 ### Project Structure (MVVM+Redux)
 From [redux.js.org](http://www.redux.js.org): `Redux is a predictable state container for JavaScript apps.`
