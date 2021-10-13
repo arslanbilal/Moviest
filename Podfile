@@ -1,12 +1,12 @@
-platform :ios, '10.0'
+platform :ios, '12.0'
 inhibit_all_warnings!
 
 target 'Moviest' do
   use_frameworks!
 
   # Pods for Moviest
-  pod 'Alamofire', '~> 5.0.0-beta.3'
-  pod 'Kingfisher', '~> 5.0'
+  pod 'Alamofire'
+  pod 'Kingfisher'
 
   target 'MoviestTests' do
     inherit! :search_paths
