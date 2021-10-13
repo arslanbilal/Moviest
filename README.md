@@ -16,15 +16,14 @@ Moviest is a simple movie list application that harnesses the power of [The Movi
 - List the last successful searches
 
 ### Requirements:
-- Xcode 10.2+
-- Swift 5.0+
-- iOS 10.0+
+- Xcode 13+
+- Swift 5+
+- iOS 12+
 
 ### Installation:
 1. Download the zip file.
-2. Navigate to the folder in Terminal
-3. Run `pod install`
-4. Open and run the app
+2. Navigate to the folder
+4. Open `Moviest.xcworkspace` and run the app
 
 ### Third-party Libs:
 - `Alamofire` for networking

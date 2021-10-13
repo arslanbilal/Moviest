@@ -29,7 +29,7 @@ class RequestManager {
 
     @discardableResult func perform<T : Codable>(_ request: MovieRequest, handleCompletion: @escaping (Response<T>) -> Void) -> NetworkManagerRequest? {
         let dataRequest = manager.request(request)
-        dataRequest.responseData { (dataResponse: DataResponse<Data>) in
+        dataRequest.responseData { (dataResponse: AFDataResponse<Data>) in
             let result: Result<T, NetworkError>
             let statusCode = dataResponse.response?.statusCode ?? 0
             if statusCode == 0 {
